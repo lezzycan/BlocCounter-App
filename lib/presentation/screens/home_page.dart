@@ -30,9 +30,13 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (context, state) {
                 return BlocConsumer<CounterCubit, CounterState>(
                   listener: (context, state) {
-                   if(state.incremented == true ){
-                    Scaffold.of(context).showBottomSheet((context) => const Text('counterValue is incremented'));
-                   }
+                    if (state.incremented == true) {
+                      Scaffold.of(context).showBottomSheet(
+                        (context) => const Text('counterValue is incremented'),
+                        
+                       
+                      );
+                    }
                   },
                   builder: (context, state) {
                     return Text(
