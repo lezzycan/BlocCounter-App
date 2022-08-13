@@ -1,11 +1,13 @@
 import 'package:counterapp/cubit/counter_cubit.dart';
+import 'package:counterapp/presentation/screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title , this.color}) : super(key: key);
 
   final String title;
+  final Color? color;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -26,9 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            BlocBuilder<CounterCubit, CounterState>(
-              builder: (context, state) {
-                return BlocConsumer<CounterCubit, CounterState>(
+               BlocConsumer<CounterCubit, CounterState>(
                   listener: (context, state) {
                     if (state.incremented == true) {
                       Scaffold.of(context).showBottomSheet(
@@ -36,6 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         
                        
                       );
+                    } else if(state.incremented == false){
+                      Scaffold.of(context).showBottomSheet((context) => const Text('counterValue is decremented'));
                     }
                   },
                   builder: (context, state) {
@@ -44,9 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: Theme.of(context).textTheme.headline4,
                     );
                   },
-                );
-              },
-            ),
+                ),
+              
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -67,6 +68,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: const Icon(Icons.remove),
                 ),
               ],
+            ),
+           const SizedBox(
+              height:24,
+            ),
+            MaterialButton(
+              color: widget.color,
+              onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SecondScreen(title: 'Second Screen',)));
+              },
+            child: const Text('Go to next screen'),
             )
           ],
         ),

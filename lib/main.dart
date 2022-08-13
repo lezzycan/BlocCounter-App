@@ -1,5 +1,7 @@
 import 'package:counterapp/cubit/counter_cubit.dart';
-import 'package:counterapp/home_page.dart';
+import 'package:counterapp/presentation/screen2.dart';
+
+import 'package:counterapp/presentation/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,6 +22,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.brown,
         ),
+        // routes: {
+        //   '/': (context) => const MyHomePage(title: 'Home Screen', color: Colors.blueAccent,),
+        //   '/second': (context) =>const  SecondScreen(title: 'Second Screen', color: Colors.greenAccent,),
+        //   '/third': (context) =>const  SecondScreen(title: 'Third Screen', color: Colors.greenAccent,)
+        // },
         home: const MyHomePage(title: 'Counter App'),
       ),
     );
