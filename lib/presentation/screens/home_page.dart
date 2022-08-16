@@ -1,13 +1,14 @@
 import 'package:counterapp/cubit/counter_cubit.dart';
 import 'package:counterapp/presentation/screen2.dart';
+import 'package:counterapp/presentation/screens/third_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title , this.color}) : super(key: key);
+  const MyHomePage({Key? key, required this.title , }) : super(key: key);
 
   final String title;
-  final Color? color;
+  
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -73,11 +74,21 @@ class _MyHomePageState extends State<MyHomePage> {
               height:24,
             ),
             MaterialButton(
-              color: widget.color,
+              color: Colors.greenAccent,
               onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SecondScreen(title: 'Second Screen',)));
+               Navigator.of(context).pushNamed('/second')
               },
-            child: const Text('Go to next screen'),
+            child: const Text('Go to second screen'),
+            ),
+            const SizedBox(
+              height:24,
+            ),
+            MaterialButton(
+              color: Colors.redAccent,
+              onPressed: (){
+                
+              },
+            child: const Text('Go to third screen'),
             )
           ],
         ),
